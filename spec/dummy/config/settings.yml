@@ -1,0 +1,4 @@
+host: 'localhost:3001'
+
+sso_provider:
+  host: 'localhost:3000'

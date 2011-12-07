@@ -7,15 +7,26 @@ require "sso_client/version"
 Gem::Specification.new do |s|
   s.name        = "sso_client"
   s.version     = SsoClient::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SsoClient."
-  s.description = "TODO: Description of SsoClient."
+  s.authors     = ["Dmitry Lihachev"]
+  s.email       = ["lda@openteam.ru"]
+  s.homepage    = "http://github.com/openteam/sso_client"
+  s.summary     = "Client gem for connecting to SSO server"
+  s.description = "Client gem for connecting to SSO server (http://github.com/openteam/sso_server)"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.1.3"
+  s.add_dependency "configliere"
+  s.add_dependency 'omniauth', '~> 1.0.1'
+  s.add_dependency 'omniauth-oauth2'
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'fabrication'
+  s.add_development_dependency 'guard-rspec'
+  s.add_development_dependency 'guard-spork'
+  s.add_development_dependency 'libnotify'
+  s.add_development_dependency 'rb-inotify'
+  s.add_development_dependency 'rspec-rails', '~> 2.6.0'
+  s.add_development_dependency 'shoulda-matchers'
+  s.add_development_dependency 'spork', '~> 0.9.0.rc9'
+  s.add_development_dependency 'sqlite3'
 end
