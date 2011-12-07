@@ -3,7 +3,7 @@ require 'omniauth/strategies/oauth2'
 module OmniAuth
   module Strategies
     class Identity < OmniAuth::Strategies::OAuth2
-      option :client_options, { :site => 'http://localhost:3000' }
+      option :client_options, { :site => Settings['sso_provider.address'] }
 
       uid { raw_info['uid'] }
       info { raw_info['info'] }

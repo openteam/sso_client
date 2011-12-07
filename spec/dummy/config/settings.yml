@@ -1,4 +1,6 @@
 host: 'localhost:3001'
 
 sso_provider:
-  host: 'localhost:3000'
+  address:    http://localhost:3000
+  app_id:     YE0NYveQGoFsNLX220Dy5g
+  app_secret: aqpGBedDnHFyp5MmgT8KErr9D015ScmaY8r3vHg5C0

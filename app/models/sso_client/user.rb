@@ -22,7 +22,7 @@ module SsoClient
     end
 
     def attributes=(attrs)
-      attrs.each_pair {|k, v| send("#{k}=", v) if respond_to?("#{k}=") }
+      attrs.each_pair {|k, v| send("#{k}=", v) if ATTRIBUTES.include? k.to_sym}
     end
 
     def read_attribute_for_validation(key)

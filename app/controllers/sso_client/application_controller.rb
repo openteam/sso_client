@@ -9,7 +9,7 @@ module SsoClient
       if !current_user
         respond_to do |format|
           format.html  {
-            redirect_to '/auth/identity'
+            redirect_to '/sso_client/auth/identity'
           }
           format.json {
             render :json => { 'error' => 'Access Denied' }.to_json

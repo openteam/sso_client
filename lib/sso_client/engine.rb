@@ -9,12 +9,9 @@ module SsoClient
     end
 
     require 'omniauth'
-
-    require "#{engine_root}/lib/omniauth-identity/omniauth/strategies/identity"
-    initializer "my_engine.add_middleware" do |app|
-      app.middleware.use ::OmniAuth::Builder do
-        provider :identity, 'YE0NYveQGoFsNLX220Dy5g', 'aqpGBedDnHFyp5MmgT8KErr9D015ScmaY8r3vHg5C0'
-      end
+    middleware.use OmniAuth::Builder do
+      require "#{engine_root}/lib/omniauth-identity/omniauth/strategies/identity"
+      provider :identity, Settings['sso_provider.app_id'], Settings['sso_provider.app_secret']
     end
   end
 end
