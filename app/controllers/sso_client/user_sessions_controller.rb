@@ -9,13 +9,13 @@ module SsoClient
       session[:user] = User.from_omniauth(request.env['omniauth.auth'])
 
       flash[:notice] = "Successfully logged in"
-      redirect_to root_path
+      redirect_to main_app.root_path
     end
 
     # Omniauth failure callback
     def failure
       flash[:notice] = params[:message]
-      redirect_to root_path
+      redirect_to main_app.root_path
     end
 
     # logout - Clear our rack session BUT essentially redirect to the provider
@@ -24,7 +24,7 @@ module SsoClient
       session[:user] = nil
 
       flash[:notice] = 'You have successfully signed out!'
-      redirect_to "#{Settings['sso.provider.host']}/users/sign_out"
+      redirect_to "#{Settings['sso_provider.host']}/users/sign_out"
     end
   end
 end
