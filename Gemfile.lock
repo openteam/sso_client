@@ -3,9 +3,9 @@ PATH
   specs:
     sso_client (0.0.1.1)
       configliere
-      omniauth (~> 1.0.1)
+      omniauth (~> 1.0.0)
       omniauth-oauth2
-      rails (~> 3.1.3)
+      rails (~> 3.1.0)
 
 GEM
   remote: http://rubygems.org/
