@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sso_client (0.0.1)
+    sso_client (0.0.1.1)
       configliere
       omniauth (~> 1.0.1)
       omniauth-oauth2
