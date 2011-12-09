@@ -3,8 +3,6 @@ require 'omniauth/strategies/oauth2'
 module OmniAuth
   module Strategies
     class Identity < OmniAuth::Strategies::OAuth2
-      option :client_options, { :site => Settings['sso_provider.host'] }
-
       uid { raw_info['uid'] }
       info { raw_info['info'] }
       extra { {:raw_info => raw_info} }
