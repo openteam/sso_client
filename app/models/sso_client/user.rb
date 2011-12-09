@@ -1,5 +1,10 @@
+require 'modest_model'
+require 'modest_model/tenacity'
+
 module SsoClient
   class User < ModestModel::Base
+    include ModestModel::Tenacity
+
     attributes :id, :name, :nickname, :email, :first_name, :last_name, :raw_info
 
     class << self

@@ -1,5 +1,4 @@
 require 'omniauth'
-require 'modest_model'
 require File.expand_path("../../../lib/omniauth/strategies/identity", __FILE__)
 
 module SsoClient
