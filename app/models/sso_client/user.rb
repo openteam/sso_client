@@ -1,6 +1,6 @@
 module SsoClient
-  class SsoClient::User
-    ATTRIBUTES = [:uid, :name, :nickname, :email, :first_name, :last_name]
+  class User
+    ATTRIBUTES = [:id, :name, :nickname, :email, :first_name, :last_name]
     attr_accessor *ATTRIBUTES
 
     def initialize(attributes = {})
@@ -10,12 +10,12 @@ module SsoClient
     def self.from_omniauth(omniauth)
       User.new(omniauth['info']).tap do | user |
         user.attributes = omniauth['extra']
-      user.uid = omniauth['uid']
+        user.id = omniauth['uid']
       end
     end
 
     def attributes
-      ATTRIBUTES.inject(ActiveSupport::HashWithIndifferentAccess.new) do |result, key|
+      ATTRIBUTES.inject(HashWithIndifferentAccess.new) do |result, key|
         result[key] = read_attribute_for_validation(key)
         result
       end
@@ -28,5 +28,34 @@ module SsoClient
     def read_attribute_for_validation(key)
       send(key)
     end
+
+    def self.current
+      Thread.current[:user]
+    end
+
+    def self.current_id
+      current.id if current
+    end
+
+    def self.current=(user)
+      Thread.current[:user] = user
+    end
+
+    def new_record?
+      false
+    end
+
+    def destroyed?
+      false
+    end
+
+    def self.primary_key
+      'id'
+    end
+
+    def [](key)
+      self.send(key)
+    end
+
   end
 end
