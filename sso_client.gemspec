@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "configliere"
   s.add_dependency 'omniauth', '~> 1.0.0'
   s.add_dependency 'omniauth-oauth2'
+  s.add_dependency 'openteam-modest_model'
 
   s.add_development_dependency 'fabrication'
   s.add_development_dependency 'guard-rspec'
