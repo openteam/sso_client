@@ -27,5 +27,13 @@ module SsoClient
         Thread.current[:user] = user
       end
     end
+
+    def new_record?
+      false
+    end
+
+    def persisted?
+      !new_record?
+    end
   end
 end
