@@ -6,5 +6,5 @@
   <%= link_to 'login', login_path %>
 <% else %>
   <h1>Hello <%= current_user.name %>!</h1>
-  <%= link_to 'logout', logout_path %>
+  <%= link_to 'logout', 'logout_path' %>
 <% end %>
