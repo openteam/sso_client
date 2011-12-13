@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root :to => 'sso_client/home#show'
+  root :to => 'home#show'
 end
