@@ -9,16 +9,20 @@ module SsoClient
     isolate_namespace SsoClient
 
     config.after_initialize do
-      raise 'Please specify sso_provider.host in settings.yml' unless defined?(Settings) && Settings[:sso_provider]
+      require 'configliere'
+      Settings.define 'sso.host',   :env_var => 'SSO_HOST',   :required => true
+      Settings.define 'sso.key',    :env_var => 'SSO_KEY',    :required => true
+      Settings.define 'sso.secret', :env_var => 'SSO_SECRET', :required => true
+      Settings.resolve!
     end
 
     initializer "sso_client.devise", :before => 'devise.omniauth' do |app|
       require "#{SsoClient::Engine.root_path}/lib/omniauth-identity/omniauth/strategies/identity"
       Devise.setup do |config|
         config.omniauth :identity,
-                        Settings['sso_provider.app_id'],
-                        Settings['sso_provider.app_secret'],
-                        :client_options => {:site => Settings['sso_provider.host']}
+                        Settings['sso.key'],
+                        Settings['sso.secret'],
+                        :client_options => {:site => Settings['sso.host']}
       end
     end
 
