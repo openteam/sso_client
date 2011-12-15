@@ -1,7 +1,5 @@
-class RecreateUsers < ActiveRecord::Migration
+class SsoCreateUsers < ActiveRecord::Migration
   def change
-    drop_table :users rescue nil
-
     create_table :users do | t |
       t.string  :uid            # omniauth[:uid]
       t.text    :name,          # omniauth[:info]

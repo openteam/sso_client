@@ -17,7 +17,7 @@ module SsoClient
       end
 
       def create_migration
-        migration_template 'migration.rb', 'db/migrate/recreate_users.rb'
+        migration_template 'migration.rb', 'db/migrate/sso_create_users.rb'
       end
     end
   end
