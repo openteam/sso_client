@@ -17,7 +17,7 @@ module SsoClient
     initializer "sso_client.devise", :before => 'devise.omniauth' do |app|
       require "#{SsoClient::Engine.root_path}/lib/omniauth-identity/omniauth/strategies/identity"
 
-      Settings.define 'sso.host',   :env_var => 'SSO_HOST',   :required => true
+      Settings.define 'sso.url',    :env_var => 'SSO_URL',    :required => true
       Settings.define 'sso.key',    :env_var => 'SSO_KEY',    :required => true
       Settings.define 'sso.secret', :env_var => 'SSO_SECRET', :required => true
 
@@ -25,7 +25,7 @@ module SsoClient
         config.omniauth :identity,
                         Settings['sso.key'],
                         Settings['sso.secret'],
-                        :client_options => {:site => Settings['sso.host']}
+                        :client_options => {:site => Settings['sso.url']}
       end
     end
 

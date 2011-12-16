@@ -4,7 +4,7 @@ class SsoClient::SessionsController < Devise::SessionsController
   end
   def destroy
     sign_out :user
-    redirect_to "#{Settings['sso_provider.host']}/users/sign_out?redirect_uri=#{CGI.escape(redirect_uri)}"
+    redirect_to "#{Settings['sso.url']}/users/sign_out?redirect_uri=#{CGI.escape(redirect_uri)}"
   end
 
   protected
