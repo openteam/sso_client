@@ -15,9 +15,10 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails"
-  s.add_dependency "configliere"
-  s.add_dependency "devise"
+  s.add_dependency 'rails'
+  s.add_dependency 'configliere'
+  s.add_dependency 'devise'
+  s.add_dependency 'devise-russian'
   s.add_dependency 'omniauth'
   s.add_dependency 'omniauth-oauth2'
 
